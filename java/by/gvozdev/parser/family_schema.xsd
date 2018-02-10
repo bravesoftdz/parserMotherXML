@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	targetNamespace="http://www.gvozdev.by/family_schema" xmlns:gvozdev="http://www.gvozdev.by/family_schema"
+	elementFormDefault="qualified">
+	<xs:element name="families" type="gvozdev:families_type" />
+	<xs:complexType name="families_type">
+		<xs:sequence>
+			<xs:element name="family" type="gvozdev:family_type" />
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="family_type">
+		<xs:sequence>
+			<xs:element name="mother" type="gvozdev:mother_type" />
+			<xs:element name="father" type="gvozdev:father_type" />
+			<xs:element name="children" type="gvozdev:children_type" />
+		</xs:sequence>
+		<xs:attribute name="alias" use="required" />
+	</xs:complexType>
+
+	<xs:complexType name="family_member_type">
+		<xs:sequence>
+			<xs:element name="name" type="xs:string" />
+			<xs:element name="surname" type="xs:string" />
+			<xs:element name="age" type="xs:int" />
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="mother_type">
+		<xs:complexContent>
+			<xs:extension base="gvozdev:family_member_type">
+				<xs:sequence>
+					<xs:element name="mainen-name" type="xs:string" />
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+
+	<xs:complexType name="father_type">
+		<xs:complexContent>
+			<xs:extension base="gvozdev:family_member_type">
+				<xs:sequence>
+					<xs:element name="speciality" type="xs:string" />
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+
+	<xs:complexType name="children_type">
+		<xs:sequence>
+			<xs:element name="child" type="gvozdev:children_type" />
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="child_type">
+		<xs:complexContent>
+			<xs:extension base="gvozdev:family_member_type">
+				<xs:sequence>
+					<xs:element name="name" type="xs:string" />
+					<xs:element name="surname" type="xs:string" />
+					<xs:element name="age" type="xs:int" />
+					<xs:element name="gender" type="xs:string" />
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+
+</xs:schema>
